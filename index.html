@@ -9,241 +9,650 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
 
+:root {
+    --pink: #c87990;
+    --pink-dark: #ad637a;
+    --pink-light: #f7e1e6;
+    --cream: #fff9f5;
+    --text: #72545a;
+    --gold: #d6ad76;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    background: #fff8f5;
-    color: #684c50;
-    font-family: 'Montserrat', sans-serif;
-    overflow-x: hidden;
-}
-
 html {
     scroll-behavior: smooth;
 }
 
-.hero {
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.scene {
     min-height: 100vh;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    padding: 40px 20px;
+    padding: 100px 20px 120px;
     position: relative;
+    text-align: center;
+    overflow: hidden;
+}
+
+.scene.active {
+    display: flex;
+    animation: fadeScene 1s ease;
+}
+
+.scene-content {
+    width: 100%;
+    max-width: 1000px;
+    position: relative;
+    z-index: 2;
+}
+
+.scene-1 {
     background:
-        radial-gradient(circle at top left, #ffe2e8, transparent 50%),
-        radial-gradient(circle at bottom right, #f8d8c8, transparent 50%),
-        #fff8f5;
+        radial-gradient(circle at 20% 20%, #f9e3e7, transparent 40%),
+        radial-gradient(circle at 80% 80%, #f7d8d0, transparent 45%),
+        #fffaf7;
 }
 
-.hero-content {
-    max-width: 850px;
-    animation: appear 2s ease;
+.scene-2 {
+    background: linear-gradient(135deg, #fff8f4, #f8e5e9);
 }
 
-.small-title {
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    font-size: 12px;
-    color: #b57c85;
-    margin-bottom: 25px;
+.scene-3 {
+    background: #fff9f5;
+}
+
+.scene-4 {
+    background: linear-gradient(135deg, #fff7f2, #f9e2e8);
+}
+
+.scene-5 {
+    background: #fff9f5;
+}
+
+.scene-6 {
+    background: radial-gradient(circle, #f9e2e8, #fff9f5);
+}
+
+.script {
+    font-family: 'Great Vibes', cursive;
+    font-weight: normal;
+    color: var(--pink);
 }
 
 h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: clamp(55px, 10vw, 110px);
-    color: #c76b84;
-    font-weight: normal;
-    line-height: 1.15;
+    font-size: clamp(60px, 10vw, 115px);
+    line-height: 1.2;
 }
 
-.hero p {
-    margin-top: 25px;
-    font-size: 17px;
+h2 {
+    font-size: clamp(40px, 7vw, 75px);
+    margin-bottom: 20px;
+}
+
+h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 40px;
+    color: var(--pink);
+    font-weight: normal;
+}
+
+.subtitle {
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #b28a8e;
+    margin-bottom: 25px;
+}
+
+.description {
+    font-size: 16px;
     line-height: 2;
-    color: #86666a;
+    margin: 25px auto;
+    max-width: 700px;
+}
+
+.main-button {
+    background: var(--pink);
+    color: white;
+    padding: 16px 30px;
+    border-radius: 50px;
+    margin: 12px 8px;
+    font-size: 14px;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 25px rgba(200,121,144,0.25);
+    transition: 0.3s;
+}
+
+.main-button:hover {
+    background: var(--pink-dark);
+    transform: translateY(-3px);
+}
+
+.secondary-button {
+    background: white;
+    color: var(--pink);
+    border: 1px solid #e8c1cb;
+    padding: 15px 25px;
+    border-radius: 50px;
+    margin: 10px;
+    transition: 0.3s;
+}
+
+.secondary-button:hover {
+    background: #fcebf0;
+}
+
+.divider {
+    width: 80px;
+    height: 2px;
+    background: var(--gold);
+    margin: 30px auto;
 }
 
 .heart {
     font-size: 40px;
-    color: #d78a9c;
-    margin: 25px 0;
-    animation: heartbeat 1.7s infinite;
+    color: var(--pink);
+    margin: 25px;
+    animation: heartbeat 2s infinite;
 }
 
-button {
-    border: none;
+/* Конверт */
+
+.envelope {
+    width: 280px;
+    height: 190px;
+    background: #e8aebb;
+    margin: 50px auto;
+    position: relative;
     cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    transition: 0.3s;
+    border-radius: 8px;
+    box-shadow: 0 15px 40px rgba(140,90,100,0.2);
+    transition: 0.5s;
 }
 
-.main-button {
-    margin-top: 25px;
-    padding: 16px 35px;
-    border-radius: 50px;
-    background: #cf8294;
-    color: white;
-    font-size: 14px;
-    letter-spacing: 1px;
-    box-shadow: 0 8px 25px rgba(207,130,148,0.3);
+.envelope:hover {
+    transform: translateY(-5px);
 }
 
-.main-button:hover {
-    transform: translateY(-4px);
-    background: #bd6e84;
-    box-shadow: 0 12px 30px rgba(207,130,148,0.4);
+.envelope::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #f3ccd5;
+    clip-path: polygon(0 0, 100% 0, 50% 65%);
+    z-index: 3;
+    transition: 0.7s;
+    transform-origin: top;
 }
 
-.section {
-    padding: 90px 20px;
-    text-align: center;
+.envelope.open::before {
+    transform: rotateX(180deg);
+    opacity: 0;
 }
 
-.section-title {
+.envelope::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #d98da2;
+    clip-path: polygon(0 100%, 0 0, 50% 60%, 100% 0, 100% 100%);
+    z-index: 2;
+    border-radius: 8px;
+}
+
+.envelope-letter {
+    position: absolute;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+    top: 10%;
+    background: #fffaf7;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--pink);
     font-family: 'Great Vibes', cursive;
-    font-size: 65px;
-    color: #c76b84;
-    font-weight: normal;
-    margin-bottom: 25px;
+    font-size: 30px;
+    transition: 1s;
 }
 
-.subtitle {
-    color: #a38385;
-    font-size: 14px;
-    line-height: 2;
+.envelope.open .envelope-letter {
+    transform: translateY(-120px);
 }
 
-.card {
-    max-width: 800px;
-    margin: 40px auto;
+.envelope-heart {
+    position: absolute;
+    z-index: 4;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 42px;
+    color: white;
+    transition: 0.5s;
+}
+
+.envelope.open .envelope-heart {
+    opacity: 0;
+}
+
+/* Письмо */
+
+.letter-card {
+    max-width: 850px;
+    background: rgba(255,255,255,0.9);
     padding: 50px;
-    background: rgba(255,255,255,0.8);
-    border: 1px solid #f3d9dd;
     border-radius: 30px;
-    box-shadow: 0 15px 50px rgba(177,113,130,0.08);
+    margin: 35px auto;
+    border: 1px solid #f1d8dd;
+    box-shadow: 0 15px 50px rgba(170,100,120,0.08);
 }
 
-.card p {
-    font-size: 16px;
+.letter-text {
     line-height: 2.2;
-    margin-bottom: 20px;
+    font-size: 16px;
+    text-align: left;
+    white-space: pre-wrap;
 }
 
 .signature {
     font-family: 'Great Vibes', cursive;
-    color: #c76b84;
     font-size: 45px;
+    color: var(--pink);
     margin-top: 30px;
+    text-align: right;
 }
 
-.photo-section {
-    background: #fff0ed;
+/* Галерея */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    max-width: 800px;
+    margin: 40px auto;
 }
 
-.photo-frame {
-    max-width: 450px;
-    margin: 35px auto;
-    min-height: 300px;
-    border: 2px dashed #dba3ae;
-    border-radius: 30px;
-    padding: 15px;
-    background: #fffaf8;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.photo-card {
+    background: white;
+    padding: 12px 12px 25px;
+    border-radius: 8px;
+    box-shadow: 0 12px 35px rgba(120,80,90,0.12);
+    transition: 0.4s;
+    transform: rotate(-2deg);
 }
 
-.photo-frame img {
+.photo-card:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.photo-card:hover {
+    transform: rotate(0) scale(1.03);
+}
+
+.photo-card img {
     width: 100%;
-    border-radius: 20px;
+    aspect-ratio: 4/5;
     object-fit: cover;
-    display: block;
+    border-radius: 5px;
 }
-.photo-placeholder {
-    padding: 50px 20px;
-    color: #b57c85;
+
+.photo-caption {
+    font-family: 'Great Vibes', cursive;
+    font-size: 30px;
+    color: var(--pink);
+    margin-top: 15px;
+}
+
+/* Букет */
+
+.bouquet {
+    min-height: 280px;
+    font-size: clamp(50px, 10vw, 90px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+}
+
+.flower {
+    display: inline-block;
+    animation: flowerAppear 1s ease backwards;
+}
+
+.flower:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.flower:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.flower:nth-child(4) {
+    animation-delay: 0.9s;
+}
+
+.flower:nth-child(5) {
+    animation-delay: 1.2s;
+}
+
+.flower:nth-child(6) {
+    animation-delay: 1.5s;
+}
+
+.bouquet-message {
+    min-height: 60px;
     font-size: 16px;
     line-height: 2;
 }
 
-.photo-placeholder span {
-    display: block;
-    font-size: 60px;
-    margin-bottom: 15px;
+/* Баночка */
+
+.jar {
+    width: 220px;
+    min-height: 280px;
+    margin: 35px auto;
+    background: rgba(255,255,255,0.65);
+    border: 4px solid #e5b7c1;
+    border-radius: 35px 35px 50px 50px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 25px rgba(200,121,144,0.1);
 }
 
-.upload-button {
-    margin: 20px;
-    padding: 14px 25px;
-    background: #e7b4bd;
-    color: #754d56;
-    border-radius: 30px;
+.jar::before {
+    content: "";
+    position: absolute;
+    top: -20px;
+    left: 35px;
+    right: 35px;
+    height: 20px;
+    border-radius: 10px;
+    background: #e5b7c1;
 }
 
-.upload-button:hover {
-    background: #d99aa8;
-    transform: scale(1.03);
+.jar::after {
+    content: "LOVE";
+    font-family: 'Great Vibes', cursive;
+    font-size: 40px;
+    color: #c87990;
+    position: absolute;
+    bottom: 20px;
 }
 
-input[type="file"] {
-    display: none;
+.jar-heart {
+    font-size: 65px;
+    cursor: pointer;
+    transition: 0.3s;
+    animation: heartbeat 2s infinite;
 }
 
-.wishes {
-    background: #fff8f5;
+.jar-heart:hover {
+    transform: scale(1.2);
 }
 
-.wish-box {
+.reason-box {
     max-width: 650px;
-    margin: 40px auto;
-    padding: 35px;
-    background: #fff;
+    min-height: 120px;
+    background: white;
     border-radius: 25px;
-    box-shadow: 0 10px 35px rgba(177,113,130,0.08);
-    min-height: 160px;
+    padding: 35px;
+    margin: 25px auto;
+    box-shadow: 0 10px 30px rgba(200,121,144,0.1);
+    line-height: 2;
+    font-size: 17px;
+}
+
+/* Финальный подарок */
+
+.gift {
+    width: 180px;
+    height: 160px;
+    margin: 70px auto;
+    position: relative;
+    cursor: pointer;
+    animation: giftFloat 3s infinite;
+}
+
+.gift-box {
+    position: absolute;
+    bottom: 0;
+    width: 180px;
+    height: 115px;
+    background: #d98da2;
+    border-radius: 8px;
+}
+
+.gift-box::before {
+    content: "";
+    position: absolute;
+    left: 70px;
+    width: 40px;
+    height: 100%;
+    background: #f4d8b0;
+}
+
+.gift-lid {
+    position: absolute;
+    top: 30px;
+    left: -10px;
+    width: 200px;
+    height: 45px;
+    background: #c87990;
+    border-radius: 8px;
+    transition: 0.7s;
+    z-index: 2;
+}
+
+.gift-lid::before {
+    content: "";
+    position: absolute;
+    left: 80px;
+    width: 40px;
+    height: 100%;
+    background: #f4d8b0;
+}
+
+.gift.open .gift-lid {
+    transform: translateY(-110px) rotate(-15deg);
+}
+
+.gift-bow {
+    position: absolute;
+    top: 0;
+    left: 60px;
+    width: 60px;
+    height: 45px;
+    z-index: 3;
+    transition: 0.7s;
+}
+
+.gift-bow::before,
+.gift-bow::after {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border: 10px solid #f4d8b0;
+    border-radius: 50% 50% 0 50%;
+}
+
+.gift-bow::before {
+    left: 0;
+    transform: rotate(-30deg);
+}
+
+.gift-bow::after {
+    right: 0;
+    transform: rotate(60deg);
+}
+
+.gift.open .gift-bow {
+    transform: translateY(-120px) rotate(25deg);
+    opacity: 0;
+}
+
+.secret {
+    display: none;
+    max-width: 750px;
+    margin: 30px auto;
+    background: white;
+    border: 1px solid #f0d4dd;
+    border-radius: 30px;
+    padding: 40px;
+    line-height: 2.2;
+    animation: fadeScene 1s ease;
+}
+
+.secret.show {
+    display: block;
+}
+
+/* Плеер */
+
+.music-player {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(94%, 520px);
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(15px);
+    border: 1px solid #efd6de;
+    border-radius: 25px;
+    padding: 15px 18px;
+    box-shadow: 0 10px 40px rgba(150,90,110,0.15);
+}
+
+.music-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.music-cover {
+    width: 45px;
+    height: 45px;
+    background: #f7e1e6;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 23px;
+    flex-shrink: 0;
 }
 
-#wishText {
-    font-size: 18px;
-    line-height: 2;
-    color: #86666a;
+.music-info {
+    flex: 1;
+    text-align: left;
+    min-width: 0;
 }
 
-.footer {
-    padding: 60px 20px;
-    text-align: center;
-    background: #f5dfe2;
-    color: #986d75;
+.music-title {
+    font-size: 13px;
+    font-weight: 500;
 }
 
-.footer p {
-    line-height: 2;
-    font-size: 14px;
+.music-status {
+    font-size: 11px;
+    color: #b28a8e;
+    margin-top: 5px;
 }
 
-.footer .love {
-    font-family: 'Great Vibes', cursive;
-    font-size: 50px;
-    color: #c76b84;
-    margin: 15px;
+.music-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.petals {
+.music-controls button {
+    background: transparent;
+    color: var(--pink);
+    font-size: 20px;
+    padding: 5px;
+}
+
+.music-controls .play {
+    width: 42px;
+    height: 42px;
+    background: var(--pink);
+    color: white;
+    border-radius: 50%;
+}
+
+.music-bottom {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.music-bottom input {
+    width: 100%;
+    accent-color: var(--pink);
+    cursor: pointer;
+}
+
+.music-bottom span {
+    font-size: 11px;
+    color: #b28a8e;
+    min-width: 35px;
+}
+
+#volume {
+    max-width: 75px;
+}
+
+.music-player.collapsed .music-bottom {
+    display: none;
+}
+
+.music-player.collapsed {
+    padding: 10px 15px;
+}
+
+.player-toggle {
+    font-size: 15px !important;
+}
+
+/* Лепестки */
+
+.petal {
     position: fixed;
-    top: -30px;
-    z-index: 10;
+    top: -50px;
     pointer-events: none;
+    z-index: 50;
     animation: fall linear forwards;
 }
+
+/* Анимации */
 
 @keyframes fall {
     to {
@@ -253,14 +662,18 @@ input[type="file"] {
 }
 
 @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
 }
 
-@keyframes appear {
+@keyframes fadeScene {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -268,32 +681,70 @@ input[type="file"] {
     }
 }
 
-.hidden-message {
-    display: none;
-    margin-top: 30px;
-    padding: 30px;
-    background: #fff0f2;
-    border-radius: 25px;
-    line-height: 2;
-    font-size: 16px;
-    animation: appear 1s ease;
+@keyframes flowerAppear {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes giftFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
 }
 
 @media(max-width:600px) {
-    .card {
-        padding: 30px 22px;
+    .scene {
+        padding: 80px 15px 145px;
     }
 
-    .section-title {
-        font-size: 50px;
+    .letter-card {
+        padding: 25px;
     }
 
-    .hero p {
-        font-size: 15px;
-    }
-
-    .card p {
+    .letter-text {
         font-size: 14px;
+    }
+
+    .gallery {
+        gap: 12px;
+    }
+
+    .photo-card {
+        padding: 8px 8px 15px;
+    }
+
+    .photo-caption {
+        font-size: 23px;
+    }
+
+    .music-player {
+        bottom: 8px;
+    }
+
+    .music-controls {
+        gap: 5px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .secret {
+        padding: 25px;
+    }
+
+    .envelope {
+        width: 250px;
+        height: 170px;
     }
 }
 </style>
@@ -301,217 +752,642 @@ input[type="file"] {
 
 <body>
 
-<!-- Первый экран -->
-<section class="hero">
-    <div class="hero-content">
-        <div class="small-title">Самому дорогому человеку</div>
+<!-- СЦЕНА 1: КОНВЕРТ -->
 
-        <h1>Мамочка,<br>это для тебя</h1>
+<section class="scene scene-1 active" id="scene1">
+    <div class="scene-content">
 
-        <p>
-            Сегодня я хочу подарить тебе не просто слова,<br>
-            а маленький кусочек своей любви.
+        <p class="subtitle">Маленький подарок для самого дорогого человека</p>
+
+        <h1 class="script">Мамочка...</h1>
+
+        <p class="description">
+            Я приготовила для тебя кое-что особенное.<br>
+            Нажми на конверт, чтобы открыть.
         </p>
 
-        <div class="heart">♥</div>
-
-        <button class="main-button" onclick="scrollToGreeting()">
-            Открыть моё поздравление ✨
-        </button>
-    </div>
-</section>
-
-<!-- Поздравление -->
-<section class="section" id="greeting">
-    <h2 class="section-title">С Днём матери!</h2>
-    <p class="subtitle">
-        Для женщины, которая заслуживает всего самого прекрасного.
-    </p>
-
-    <div class="card">
-        <p>
-            Моя любимая мамочка!
-        </p>
-
-        <p>
-            В этот особенный день я хочу сказать тебе огромное
-            спасибо за всё, что ты делаешь для меня.
-            За твою заботу, терпение, доброту, за тёплые объятия
-            и за то, что ты всегда рядом, даже когда я этого не замечаю.
-        </p>
-
-        <p>
-            Ты — человек, к которому всегда хочется возвращаться.
-            Твой голос успокаивает, твоя улыбка согревает,
-            а твоя любовь делает мир намного светлее.
-        </p>
-
-        <p>
-            Я хочу, чтобы ты всегда была счастлива, чтобы у тебя
-            было как можно больше поводов улыбаться, чтобы твои
-            глаза никогда не знали слёз печали, а сердце всегда
-            чувствовало, как сильно тебя любят.
-        </p>
-
-        <p>
-            Желаю тебе здоровья, душевного спокойствия, исполнения
-            всех мечт, красивых моментов, уютных вечеров и
-            бесконечного счастья. Ты заслуживаешь самого лучшего!
-        </p>
-
-        <p>
-            Я люблю тебя больше, чем иногда умею выразить словами.
-            И пусть ты никогда не забываешь, насколько ты важна
-            для меня.
-        </p>
-
-        <div class="signature">
-            С любовью, твоя дочь Яна ❤️
+        <div class="envelope" id="envelope" onclick="openEnvelope()">
+            <div class="envelope-letter">
+                Для самой любимой...
+            </div>
+            <div class="envelope-heart">♥</div>
         </div>
+
+        <button class="main-button" onclick="openEnvelope()">
+            Открыть письмо 💌
+        </button>
+
     </div>
 </section>
 
-<!-- Фотография -->
-<section class="section photo-section">
-    <h2 class="section-title">Наши моменты</h2>
+<!-- СЦЕНА 2: ПИСЬМО -->
 
-    <p class="subtitle">
-        Самые дорогие воспоминания всегда связаны с тобой.
-    </p>
+<section class="scene scene-2" id="scene2">
+    <div class="scene-content">
 
-    <div class="photo-frame">
-        <img src="mom.jpg" alt="Моя любимая мама">
+        <p class="subtitle">Несколько слов от сердца</p>
+
+        <h2 class="script">Моя любимая мама</h2>
+
+        <div class="divider"></div>
+
+        <div class="letter-card">
+            <div class="letter-text" id="typedText"></div>
+
+            <div class="signature" id="signature" style="display:none">
+                Я тебя люблю, твоя дочка Яна ♥
+            </div>
+        </div>
+
+        <button class="main-button" onclick="nextScene(3)">
+            Наши воспоминания 📷
+        </button>
+
     </div>
 </section>
 
-<!-- Пожелания -->
-<section class="section wishes">
-    <h2 class="section-title">Немного волшебства</h2>
+<!-- СЦЕНА 3: ФОТО -->
 
-    <p class="subtitle">
-        Нажми на кнопку, и я подарю тебе ещё одно пожелание.
-    </p>
+<section class="scene scene-3" id="scene3">
+    <div class="scene-content">
 
-    <div class="wish-box">
-        <p id="wishText">
-            Здесь спрятано маленькое пожелание для тебя... 💗
+        <p class="subtitle">Моменты, которые я храню в сердце</p>
+
+        <h2 class="script">Наш маленький мир</h2>
+
+        <p class="description">
+            Каждый момент рядом с тобой — это что-то особенное.
         </p>
-    </div>
 
-    <button class="main-button" onclick="newWish()">
-        Подарить пожелание ✨
-    </button>
+        <div class="gallery">
 
-    <br>
+            <div class="photo-card">
+                <img src="photo1.jpg" alt="Наше воспоминание 1">
+                <div class="photo-caption">Моменты счастья</div>
+            </div>
 
-    <button class="main-button" onclick="showSecret()">
-        Ещё кое-что... 💌
-    </button>
+            <div class="photo-card">
+                <img src="photo2.jpg" alt="Наше воспоминание 2">
+                <div class="photo-caption">Наша улыбка</div>
+            </div>
 
-    <div class="hidden-message" id="secret">
-        Мамочка, если бы мне дали возможность выбрать маму
-        во всём мире, я бы снова и снова выбирала тебя.
-        <br><br>
-        Спасибо, что ты именно моя.
-        <br>
-        Я люблю тебя бесконечно! ❤️
+            <div class="photo-card">
+                <img src="photo3.jpg" alt="Наше воспоминание 3">
+                <div class="photo-caption">Тёплые дни</div>
+            </div>
+
+            <div class="photo-card">
+                <img src="photo4.jpg" alt="Наше воспоминание 4">
+                <div class="photo-caption">Любимые моменты</div>
+            </div>
+
+        </div>
+
+        <button class="main-button" onclick="nextScene(4)">
+            Для тебя цветы 🌷
+        </button>
+
     </div>
 </section>
 
-<!-- Завершение -->
-<footer class="footer">
-    <p>Пусть каждый твой день будет наполнен любовью.</p>
+<!-- СЦЕНА 4: БУКЕТ -->
 
-    <div class="love">Я тебя люблю ♥</div>
+<section class="scene scene-4" id="scene4">
+    <div class="scene-content">
 
-    <p>
-        Ты — самое прекрасное, что есть в моей жизни.
-    </p>
-</footer>
+        <p class="subtitle">Ни один букет не сравнится с тобой</p>
+
+        <h2 class="script">Цветы для мамы</h2>
+
+        <div class="bouquet" id="bouquet">
+            <span class="flower">🌷</span>
+            <span class="flower">🌹</span>
+            <span class="flower">🌷</span>
+            <span class="flower">🌸</span>
+            <span class="flower">🌹</span>
+            <span class="flower">🌷</span>
+        </div>
+
+        <div class="bouquet-message" id="bouquetMessage">
+            Эти цветы — лишь маленькая частичка моей любви.
+        </div>
+
+        <button class="secondary-button" onclick="growFlowers()">
+            Добавить цветов ✨
+        </button>
+
+        <button class="main-button" onclick="nextScene(5)">
+            А теперь кое-что ещё 💗
+        </button>
+
+    </div>
+</section>
+
+<!-- СЦЕНА 5: БАНОЧКА -->
+
+<section class="scene scene-5" id="scene5">
+    <div class="scene-content">
+
+        <p class="subtitle">Я собрала их для тебя</p>
+
+        <h2 class="script">Причины моей любви</h2>
+
+        <p class="description">
+            В этой баночке спрятаны маленькие признания.<br>
+            Нажми на сердечко, чтобы достать одно из них.
+        </p>
+
+        <div class="jar">
+            <div class="jar-heart" onclick="drawReason()">💗</div>
+        </div>
+
+        <div class="reason-box" id="reasonBox">
+            Здесь спрятано признание...
+        </div>
+
+        <button class="secondary-button" onclick="drawReason()">
+            Достать сердечко 💌
+        </button>
+
+        <button class="main-button" onclick="nextScene(6)">
+            Последний сюрприз 🎁
+        </button>
+
+    </div>
+</section>
+
+<!-- СЦЕНА 6: ПОДАРОК -->
+
+<section class="scene scene-6" id="scene6">
+    <div class="scene-content">
+
+        <p class="subtitle">И самое главное...</p>
+
+        <h2 class="script">Это для тебя</h2>
+
+        <p class="description">
+            Нажми на подарок. В нём спрятано кое-что,
+            что я хочу сказать тебе всегда.
+        </p>
+
+        <div class="gift" id="gift" onclick="openGift()">
+            <div class="gift-bow"></div>
+            <div class="gift-lid"></div>
+            <div class="gift-box"></div>
+        </div>
+
+        <button class="main-button" onclick="openGift()">
+            Открыть подарок ❤️
+        </button>
+
+        <div class="secret" id="secret">
+
+            <h2 class="script">Ты — моё счастье</h2>
+
+            <p>
+                Мамочка, если бы мне дали возможность выбрать
+                маму во всём мире, я бы снова и снова выбирала тебя.
+            </p>
+
+            <br>
+
+            <p>
+                Спасибо за твою любовь, за тепло, за заботу,
+                за все объятия, за поддержку и за то,
+                что ты всегда остаёшься моим самым родным человеком.
+            </p>
+
+            <br>
+
+            <p>
+                Я хочу, чтобы ты улыбалась чаще, чтобы у тебя
+                всегда были силы, чтобы мечты сбывались,
+                а жизнь дарила тебе только самые прекрасные моменты.
+            </p>
+
+            <br>
+
+            <p>
+                Ты заслуживаешь всего самого светлого,
+                доброго и прекрасного.
+            </p>
+
+            <br>
+
+            <p class="script" style="font-size:45px">
+                Я люблю тебя бесконечно! ❤️
+            </p>
+
+        </div>
+
+        <button class="secondary-button" onclick="restartSite()">
+            Начать сначала 🌷
+        </button>
+
+    </div>
+</section>
+
+<!-- МУЗЫКАЛЬНЫЙ ПЛЕЕР -->
+
+<div class="music-player" id="musicPlayer">
+
+    <div class="music-top">
+
+        <div class="music-cover" id="musicCover">♫</div>
+
+        <div class="music-info">
+            <div class="music-title">Мелодия для мамы</div>
+            <div class="music-status" id="musicStatus">
+                Музыка выключена
+            </div>
+        </div>
+
+        <div class="music-controls">
+            <button onclick="togglePlay()" class="play" id="playButton">
+                ▶
+            </button>
+
+            <button onclick="toggleMute()" id="muteButton">
+                🔊
+            </button>
+
+            <button onclick="togglePlayer()" class="player-toggle">
+                −
+            </button>
+        </div>
+
+    </div>
+
+    <div class="music-bottom">
+
+        <span id="currentTime">0:00</span>
+
+        <input
+            type="range"
+            id="progress"
+            min="0"
+            max="100"
+            value="0"
+        >
+
+        <span id="duration">0:00</span>
+
+        <input
+            type="range"
+            id="volume"
+            min="0"
+            max="1"
+            step="0.05"
+            value="0.5"
+        >
+
+    </div>
+
+</div>
+
+<audio id="audio" src="music.mp3" preload="metadata"></audio>
 
 <script>
 
-// Плавное перемещение к поздравлению
-function scrollToGreeting() {
-    document.getElementById('greeting').scrollIntoView({
+// ПЕРЕКЛЮЧЕНИЕ СЦЕН
+
+function nextScene(number) {
+    document.querySelectorAll('.scene').forEach(scene => {
+        scene.classList.remove('active');
+    });
+
+    document.getElementById('scene' + number).classList.add('active');
+
+    window.scrollTo({
+        top: 0,
         behavior: 'smooth'
     });
-}
 
-// Пожелания
-const wishes = [
-    "Пусть каждое утро начинается с улыбки и ощущения счастья. 🌷",
-    "Желаю тебе здоровья, которое никогда не подводит, и сил на все мечты. 💗",
-    "Пусть вокруг тебя всегда будут люди, которые ценят и любят тебя. 🌸",
-    "Желаю тебе море маленьких радостей и огромных счастливых моментов. ✨",
-    "Пусть все тревоги исчезают, а на их место приходят спокойствие и любовь. 🕊️",
-    "Пусть ты всегда помнишь: ты невероятная, прекрасная и самая лучшая мама! 💕",
-    "Желаю тебе путешествий, приключений, подарков и исполнения желаний. 🎁",
-    "Пусть каждый день напоминает тебе о том, как сильно ты любима. ❤️"
-];
-
-let lastWish = -1;
-
-function newWish() {
-    let index;
-
-    do {
-        index = Math.floor(Math.random() * wishes.length);
-    } while (index === lastWish);
-
-    lastWish = index;
-
-    const text = document.getElementById('wishText');
-
-    text.style.opacity = 0;
-
-    setTimeout(() => {
-        text.textContent = wishes[index];
-        text.style.opacity = 1;
-    }, 300);
-}
-
-document.getElementById('wishText').style.transition = 'opacity 0.3s';
-
-// Секретное послание
-function showSecret() {
-    const secret = document.getElementById('secret');
-
-    if (secret.style.display === 'block') {
-        secret.style.display = 'none';
-    } else {
-        secret.style.display = 'block';
-        secret.scrollIntoView({
-            behavior: 'smooth',
-            block: 'center'
-        });
+    if (number === 2) {
+        startTyping();
     }
 }
 
+// КОНВЕРТ
 
+let envelopeOpened = false;
 
-// Падающие лепестки
+function openEnvelope() {
+    if (envelopeOpened) {
+        nextScene(2);
+        return;
+    }
+
+    envelopeOpened = true;
+
+    document.getElementById('envelope').classList.add('open');
+
+    setTimeout(() => {
+        nextScene(2);
+    }, 900);
+}
+
+// ПИСЬМО
+
+const letter = `Моя любимая мамочка!
+
+Я не всегда говорю тебе о том, насколько сильно люблю тебя, поэтому сегодня хочу, чтобы ты прочитала эти слова и почувствовала всю мою любовь.
+
+Спасибо тебе за то, что ты есть. За твою доброту, за заботу, за терпение, за поддержку и за то, что ты всегда веришь в меня.
+
+Спасибо за все маленькие и большие вещи, которые ты делаешь каждый день. За твои советы, за объятия, за улыбку, за то, что рядом с тобой даже самый обычный день становится особенным.
+
+Я хочу, чтобы ты была по-настоящему счастлива. Чтобы никогда не забывала о себе, чтобы исполняла свои мечты, путешествовала, отдыхала, улыбалась и наслаждалась каждым днём.
+
+Пусть жизнь возвращает тебе всё тепло, которое ты подарила мне. Пусть в твоём сердце всегда будет спокойствие, а рядом — люди, которые ценят тебя так же сильно, как я.
+
+Ты самая прекрасная мама, и я бесконечно благодарна судьбе за то, что именно ты моя мама.
+
+С Днём матери!`;
+
+let typingStarted = false;
+
+function startTyping() {
+    if (typingStarted) return;
+
+    typingStarted = true;
+
+    const target = document.getElementById('typedText');
+    const signature = document.getElementById('signature');
+
+    let i = 0;
+
+    function type() {
+        if (i < letter.length) {
+            target.textContent += letter.charAt(i);
+            i++;
+
+            let delay = letter.charAt(i - 1) === '\n' ? 100 : 22;
+
+            setTimeout(type, delay);
+        } else {
+            signature.style.display = 'block';
+        }
+    }
+
+    type();
+}
+
+// БУКЕТ
+
+let flowerCount = 6;
+
+function growFlowers() {
+    if (flowerCount >= 18) {
+        document.getElementById('bouquetMessage').textContent =
+            'Теперь это целый сад моей любви! 🌸';
+        return;
+    }
+
+    const bouquet = document.getElementById('bouquet');
+
+    const flowers = ['🌷', '🌹', '🌸', '💐', '🌺'];
+
+    const flower = document.createElement('span');
+
+    flower.className = 'flower';
+    flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+
+    bouquet.appendChild(flower);
+
+    flowerCount++;
+
+    document.getElementById('bouquetMessage').textContent =
+        'Каждый цветок — это ещё одно «я люблю тебя»! ❤️';
+}
+
+// БАНОЧКА ПРИЗНАНИЙ
+
+const reasons = [
+    'Я люблю тебя за то, что ты всегда умеешь выслушать.',
+    'Я люблю тебя за твою невероятную доброту.',
+    'Я люблю тебя за твои объятия, в которых так уютно.',
+    'Я люблю тебя за то, что ты веришь в меня.',
+    'Я люблю тебя за твою улыбку.',
+    'Я люблю тебя за твою заботу.',
+    'Я люблю тебя за то, что ты умеешь поддержать.',
+    'Я люблю тебя за твоё большое и доброе сердце.',
+    'Я люблю тебя за все наши воспоминания.',
+    'Я люблю тебя за то, что рядом с тобой я могу быть собой.',
+    'Я люблю тебя за твоё терпение.',
+    'Я люблю тебя за твою искренность.',
+    'Я люблю тебя за то, что ты делаешь наш дом уютным.',
+    'Я люблю тебя за то, что ты всегда остаёшься собой.',
+    'Я люблю тебя просто за то, что ты есть.',
+    'Я люблю тебя за твою мудрость.',
+    'Я люблю тебя за твой голос.',
+    'Я люблю тебя за твою нежность.',
+    'Я люблю тебя за все моменты, когда ты помогала мне.',
+    'Я люблю тебя больше, чем могу выразить словами.'
+];
+
+let usedReasons = [];
+
+function drawReason() {
+    if (usedReasons.length === reasons.length) {
+        usedReasons = [];
+    }
+
+    let available = reasons
+        .map((reason, index) => index)
+        .filter(index => !usedReasons.includes(index));
+
+    let index = available[Math.floor(Math.random() * available.length)];
+
+    usedReasons.push(index);
+
+    document.getElementById('reasonBox').textContent = reasons[index];
+}
+
+// ПОДАРОК
+
+let giftOpened = false;
+
+function openGift() {
+    if (giftOpened) return;
+
+    giftOpened = true;
+
+    document.getElementById('gift').classList.add('open');
+
+    setTimeout(() => {
+        document.getElementById('secret').classList.add('show');
+
+        document.getElementById('secret').scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+
+        burstHearts();
+    }, 800);
+}
+
+// СЕРДЕЧКИ
+
+function burstHearts() {
+    const symbols = ['💗', '💕', '❤️', '🌸', '✨', '💖'];
+
+    for (let i = 0; i < 35; i++) {
+        const heart = document.createElement('div');
+
+        heart.className = 'petal';
+        heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = (20 + Math.random() * 25) + 'px';
+        heart.style.animationDuration = (3 + Math.random() * 4) + 's';
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 8000);
+    }
+}
+
+// ПАДАЮЩИЕ ЛЕПЕСТКИ
+
 function createPetal() {
     const petal = document.createElement('div');
 
-    petal.classList.add('petals');
+    petal.className = 'petal';
 
     const symbols = ['🌸', '🌷', '💕', '💗', '✨'];
 
-    petal.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+    petal.textContent = symbols[Math.floor(Math.random() * symbols.length)];
 
     petal.style.left = Math.random() * 100 + 'vw';
-    petal.style.fontSize = (15 + Math.random() * 20) + 'px';
-    petal.style.animationDuration = (5 + Math.random() * 7) + 's';
+    petal.style.fontSize = (14 + Math.random() * 18) + 'px';
+    petal.style.animationDuration = (7 + Math.random() * 7) + 's';
 
     document.body.appendChild(petal);
 
-    setTimeout(() => {
-        petal.remove();
-    }, 12000);
+    setTimeout(() => petal.remove(), 14000);
 }
 
-setInterval(createPetal, 700);
+setInterval(createPetal, 1000);
+
+// МУЗЫКАЛЬНЫЙ ПЛЕЕР
+
+const audio = document.getElementById('audio');
+const playButton = document.getElementById('playButton');
+const progress = document.getElementById('progress');
+const volume = document.getElementById('volume');
+const currentTime = document.getElementById('currentTime');
+const duration = document.getElementById('duration');
+const musicStatus = document.getElementById('musicStatus');
+const muteButton = document.getElementById('muteButton');
+const musicPlayer = document.getElementById('musicPlayer');
+
+audio.volume = 0.5;
+
+function togglePlay() {
+    if (audio.paused) {
+        audio.play().then(() => {
+            playButton.textContent = 'Ⅱ';
+            musicStatus.textContent = 'Музыка играет ♡';
+        }).catch(() => {
+            musicStatus.textContent = 'Помести music.mp3 рядом с сайтом';
+        });
+    } else {
+        audio.pause();
+        playButton.textContent = '▶';
+        musicStatus.textContent = 'Музыка на паузе';
+    }
+}
+
+audio.addEventListener('play', () => {
+    playButton.textContent = 'Ⅱ';
+    musicStatus.textContent = 'Музыка играет ♡';
+});
+
+audio.addEventListener('pause', () => {
+    playButton.textContent = '▶';
+    musicStatus.textContent = 'Музыка на паузе';
+});
+
+audio.addEventListener('ended', () => {
+    playButton.textContent = '▶';
+    musicStatus.textContent = 'Мелодия закончилась';
+});
+
+function formatTime(seconds) {
+    if (!isFinite(seconds)) return '0:00';
+
+    const mins = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60);
+
+    return mins + ':' + String(secs).padStart(2, '0');
+}
+
+audio.addEventListener('loadedmetadata', () => {
+    duration.textContent = formatTime(audio.duration);
+});
+
+audio.addEventListener('timeupdate', () => {
+    if (audio.duration) {
+        progress.value = (audio.currentTime / audio.duration) * 100;
+        currentTime.textContent = formatTime(audio.currentTime);
+    }
+});
+
+progress.addEventListener('input', () => {
+    if (audio.duration) {
+        audio.currentTime = (progress.value / 100) * audio.duration;
+    }
+});
+
+volume.addEventListener('input', () => {
+    audio.volume = volume.value;
+    audio.muted = false;
+    muteButton.textContent = '🔊';
+});
+
+function toggleMute() {
+    audio.muted = !audio.muted;
+
+    muteButton.textContent = audio.muted ? '🔇' : '🔊';
+}
+
+function togglePlayer() {
+    musicPlayer.classList.toggle('collapsed');
+
+    document.querySelector('.player-toggle').textContent =
+        musicPlayer.classList.contains('collapsed') ? '+' : '−';
+}
+
+// ПОВТОРНОЕ ПРОХОЖДЕНИЕ
+
+function restartSite() {
+    document.getElementById('envelope').classList.remove('open');
+
+    envelopeOpened = false;
+    typingStarted = false;
+    giftOpened = false;
+    usedReasons = [];
+    flowerCount = 6;
+
+    document.getElementById('typedText').textContent = '';
+    document.getElementById('signature').style.display = 'none';
+    document.getElementById('secret').classList.remove('show');
+
+    document.getElementById('bouquet').innerHTML = `
+        <span class="flower">🌷</span>
+        <span class="flower">🌹</span>
+        <span class="flower">🌷</span>
+        <span class="flower">🌸</span>
+        <span class="flower">🌹</span>
+        <span class="flower">🌷</span>
+    `;
+
+    document.getElementById('reasonBox').textContent =
+        'Здесь спрятано признание...';
+
+    nextScene(1);
+}
 
 </script>
 
