@@ -1,0 +1,519 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Для моей любимой мамы ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #fff8f5;
+    color: #684c50;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    background:
+        radial-gradient(circle at top left, #ffe2e8, transparent 50%),
+        radial-gradient(circle at bottom right, #f8d8c8, transparent 50%),
+        #fff8f5;
+}
+
+.hero-content {
+    max-width: 850px;
+    animation: appear 2s ease;
+}
+
+.small-title {
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #b57c85;
+    margin-bottom: 25px;
+}
+
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(55px, 10vw, 110px);
+    color: #c76b84;
+    font-weight: normal;
+    line-height: 1.15;
+}
+
+.hero p {
+    margin-top: 25px;
+    font-size: 17px;
+    line-height: 2;
+    color: #86666a;
+}
+
+.heart {
+    font-size: 40px;
+    color: #d78a9c;
+    margin: 25px 0;
+    animation: heartbeat 1.7s infinite;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    transition: 0.3s;
+}
+
+.main-button {
+    margin-top: 25px;
+    padding: 16px 35px;
+    border-radius: 50px;
+    background: #cf8294;
+    color: white;
+    font-size: 14px;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 25px rgba(207,130,148,0.3);
+}
+
+.main-button:hover {
+    transform: translateY(-4px);
+    background: #bd6e84;
+    box-shadow: 0 12px 30px rgba(207,130,148,0.4);
+}
+
+.section {
+    padding: 90px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 65px;
+    color: #c76b84;
+    font-weight: normal;
+    margin-bottom: 25px;
+}
+
+.subtitle {
+    color: #a38385;
+    font-size: 14px;
+    line-height: 2;
+}
+
+.card {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 50px;
+    background: rgba(255,255,255,0.8);
+    border: 1px solid #f3d9dd;
+    border-radius: 30px;
+    box-shadow: 0 15px 50px rgba(177,113,130,0.08);
+}
+
+.card p {
+    font-size: 16px;
+    line-height: 2.2;
+    margin-bottom: 20px;
+}
+
+.signature {
+    font-family: 'Great Vibes', cursive;
+    color: #c76b84;
+    font-size: 45px;
+    margin-top: 30px;
+}
+
+.photo-section {
+    background: #fff0ed;
+}
+
+.photo-frame {
+    max-width: 450px;
+    margin: 35px auto;
+    min-height: 300px;
+    border: 2px dashed #dba3ae;
+    border-radius: 30px;
+    padding: 15px;
+    background: #fffaf8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.photo-frame img {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    display: block;
+}
+.photo-placeholder {
+    padding: 50px 20px;
+    color: #b57c85;
+    font-size: 16px;
+    line-height: 2;
+}
+
+.photo-placeholder span {
+    display: block;
+    font-size: 60px;
+    margin-bottom: 15px;
+}
+
+.upload-button {
+    margin: 20px;
+    padding: 14px 25px;
+    background: #e7b4bd;
+    color: #754d56;
+    border-radius: 30px;
+}
+
+.upload-button:hover {
+    background: #d99aa8;
+    transform: scale(1.03);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.wishes {
+    background: #fff8f5;
+}
+
+.wish-box {
+    max-width: 650px;
+    margin: 40px auto;
+    padding: 35px;
+    background: #fff;
+    border-radius: 25px;
+    box-shadow: 0 10px 35px rgba(177,113,130,0.08);
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#wishText {
+    font-size: 18px;
+    line-height: 2;
+    color: #86666a;
+}
+
+.footer {
+    padding: 60px 20px;
+    text-align: center;
+    background: #f5dfe2;
+    color: #986d75;
+}
+
+.footer p {
+    line-height: 2;
+    font-size: 14px;
+}
+
+.footer .love {
+    font-family: 'Great Vibes', cursive;
+    font-size: 50px;
+    color: #c76b84;
+    margin: 15px;
+}
+
+.petals {
+    position: fixed;
+    top: -30px;
+    z-index: 10;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hidden-message {
+    display: none;
+    margin-top: 30px;
+    padding: 30px;
+    background: #fff0f2;
+    border-radius: 25px;
+    line-height: 2;
+    font-size: 16px;
+    animation: appear 1s ease;
+}
+
+@media(max-width:600px) {
+    .card {
+        padding: 30px 22px;
+    }
+
+    .section-title {
+        font-size: 50px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Первый экран -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="small-title">Самому дорогому человеку</div>
+
+        <h1>Мамочка,<br>это для тебя</h1>
+
+        <p>
+            Сегодня я хочу подарить тебе не просто слова,<br>
+            а маленький кусочек своей любви.
+        </p>
+
+        <div class="heart">♥</div>
+
+        <button class="main-button" onclick="scrollToGreeting()">
+            Открыть моё поздравление ✨
+        </button>
+    </div>
+</section>
+
+<!-- Поздравление -->
+<section class="section" id="greeting">
+    <h2 class="section-title">С Днём матери!</h2>
+    <p class="subtitle">
+        Для женщины, которая заслуживает всего самого прекрасного.
+    </p>
+
+    <div class="card">
+        <p>
+            Моя любимая мамочка!
+        </p>
+
+        <p>
+            В этот особенный день я хочу сказать тебе огромное
+            спасибо за всё, что ты делаешь для меня.
+            За твою заботу, терпение, доброту, за тёплые объятия
+            и за то, что ты всегда рядом, даже когда я этого не замечаю.
+        </p>
+
+        <p>
+            Ты — человек, к которому всегда хочется возвращаться.
+            Твой голос успокаивает, твоя улыбка согревает,
+            а твоя любовь делает мир намного светлее.
+        </p>
+
+        <p>
+            Я хочу, чтобы ты всегда была счастлива, чтобы у тебя
+            было как можно больше поводов улыбаться, чтобы твои
+            глаза никогда не знали слёз печали, а сердце всегда
+            чувствовало, как сильно тебя любят.
+        </p>
+
+        <p>
+            Желаю тебе здоровья, душевного спокойствия, исполнения
+            всех мечт, красивых моментов, уютных вечеров и
+            бесконечного счастья. Ты заслуживаешь самого лучшего!
+        </p>
+
+        <p>
+            Я люблю тебя больше, чем иногда умею выразить словами.
+            И пусть ты никогда не забываешь, насколько ты важна
+            для меня.
+        </p>
+
+        <div class="signature">
+            С любовью, твоя дочь Яна ❤️
+        </div>
+    </div>
+</section>
+
+<!-- Фотография -->
+<section class="section photo-section">
+    <h2 class="section-title">Наши моменты</h2>
+
+    <p class="subtitle">
+        Самые дорогие воспоминания всегда связаны с тобой.
+    </p>
+
+    <div class="photo-frame">
+        <img src="mom.jpg" alt="Моя любимая мама">
+    </div>
+</section>
+
+<!-- Пожелания -->
+<section class="section wishes">
+    <h2 class="section-title">Немного волшебства</h2>
+
+    <p class="subtitle">
+        Нажми на кнопку, и я подарю тебе ещё одно пожелание.
+    </p>
+
+    <div class="wish-box">
+        <p id="wishText">
+            Здесь спрятано маленькое пожелание для тебя... 💗
+        </p>
+    </div>
+
+    <button class="main-button" onclick="newWish()">
+        Подарить пожелание ✨
+    </button>
+
+    <br>
+
+    <button class="main-button" onclick="showSecret()">
+        Ещё кое-что... 💌
+    </button>
+
+    <div class="hidden-message" id="secret">
+        Мамочка, если бы мне дали возможность выбрать маму
+        во всём мире, я бы снова и снова выбирала тебя.
+        <br><br>
+        Спасибо, что ты именно моя.
+        <br>
+        Я люблю тебя бесконечно! ❤️
+    </div>
+</section>
+
+<!-- Завершение -->
+<footer class="footer">
+    <p>Пусть каждый твой день будет наполнен любовью.</p>
+
+    <div class="love">Я тебя люблю ♥</div>
+
+    <p>
+        Ты — самое прекрасное, что есть в моей жизни.
+    </p>
+</footer>
+
+<script>
+
+// Плавное перемещение к поздравлению
+function scrollToGreeting() {
+    document.getElementById('greeting').scrollIntoView({
+        behavior: 'smooth'
+    });
+}
+
+// Пожелания
+const wishes = [
+    "Пусть каждое утро начинается с улыбки и ощущения счастья. 🌷",
+    "Желаю тебе здоровья, которое никогда не подводит, и сил на все мечты. 💗",
+    "Пусть вокруг тебя всегда будут люди, которые ценят и любят тебя. 🌸",
+    "Желаю тебе море маленьких радостей и огромных счастливых моментов. ✨",
+    "Пусть все тревоги исчезают, а на их место приходят спокойствие и любовь. 🕊️",
+    "Пусть ты всегда помнишь: ты невероятная, прекрасная и самая лучшая мама! 💕",
+    "Желаю тебе путешествий, приключений, подарков и исполнения желаний. 🎁",
+    "Пусть каждый день напоминает тебе о том, как сильно ты любима. ❤️"
+];
+
+let lastWish = -1;
+
+function newWish() {
+    let index;
+
+    do {
+        index = Math.floor(Math.random() * wishes.length);
+    } while (index === lastWish);
+
+    lastWish = index;
+
+    const text = document.getElementById('wishText');
+
+    text.style.opacity = 0;
+
+    setTimeout(() => {
+        text.textContent = wishes[index];
+        text.style.opacity = 1;
+    }, 300);
+}
+
+document.getElementById('wishText').style.transition = 'opacity 0.3s';
+
+// Секретное послание
+function showSecret() {
+    const secret = document.getElementById('secret');
+
+    if (secret.style.display === 'block') {
+        secret.style.display = 'none';
+    } else {
+        secret.style.display = 'block';
+        secret.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+        });
+    }
+}
+
+
+
+// Падающие лепестки
+function createPetal() {
+    const petal = document.createElement('div');
+
+    petal.classList.add('petals');
+
+    const symbols = ['🌸', '🌷', '💕', '💗', '✨'];
+
+    petal.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+
+    petal.style.left = Math.random() * 100 + 'vw';
+    petal.style.fontSize = (15 + Math.random() * 20) + 'px';
+    petal.style.animationDuration = (5 + Math.random() * 7) + 's';
+
+    document.body.appendChild(petal);
+
+    setTimeout(() => {
+        petal.remove();
+    }, 12000);
+}
+
+setInterval(createPetal, 700);
+
+</script>
+
+</body>
+</html>
